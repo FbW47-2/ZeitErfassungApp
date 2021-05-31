@@ -1,5 +1,6 @@
-
+import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./NavBar";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Pages/Home";
@@ -21,6 +22,7 @@ function App() {
          
         </Switch>
       </BrowserRouter>
+      <Contact/>
     </div>
   );
 }

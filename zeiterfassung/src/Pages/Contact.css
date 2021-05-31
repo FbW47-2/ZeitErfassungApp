@@ -1,0 +1,20 @@
+Form{
+    border:2px solid rgb(231, 223, 223);
+    margin: auto;
+    padding: 20px;
+    width: 60%;
+
+}
+
+
+
+#exampleText{
+
+    margin-bottom: 20px;
+
+
+}
+
+input{
+    margin-bottom: 20px;
+}
