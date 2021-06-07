@@ -42,7 +42,7 @@ function App() {
        <BrowserRouter>
 
         
-        <Switch>
+            <Switch>
           
       <LoggInContext.Provider value={{ userName, setUsername, showProfile, setShowProfile, password, setPassword }}>
 
@@ -56,11 +56,7 @@ function App() {
           <Route exact path= { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/contact" : "" )})} component={Contact} />
 
 
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/Showpersonal" component={ShowPersonal} />
-          <Route path="/Payment" component={Payment} />
-          <Route path="/Contact" component={Contact} />
+          
 
          
       </LoggInContext.Provider>

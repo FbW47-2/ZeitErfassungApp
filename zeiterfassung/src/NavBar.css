@@ -3,10 +3,8 @@
     padding: 0;
     box-sizing: border-box;
     }
-    body {
-        background-color: #d8eaee;
-    }
-    ul{
+    
+    .navbarUl{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
