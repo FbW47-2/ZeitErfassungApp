@@ -1,6 +1,7 @@
 import React, {createContext, useState } from 'react'
 import Employees from '../Component/Employees'
 import Details from '../Component/Details'
+import NavBar from '../NavBar'
 import './ShowPersonnel.css'
 import logo from '../Fotos/Cüneyt.jpg'
  
@@ -52,6 +53,8 @@ function ShowPersonal() {
         
     }];
     return (
+        <>
+        <NavBar/>
         <div className="ShowDiv">
             {/* {employees.name =="Galip" ? } */}
             
@@ -62,6 +65,7 @@ function ShowPersonal() {
             </ThemeContext.Provider>
 
         </div>
+        </>
     )
 }
 
