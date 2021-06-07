@@ -1,7 +1,9 @@
+
 import React, { useState } from "react";
 import { LoggInContext } from "./Context/LoggInContext";
 import './App.css';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
 import Home from "./Pages/Home";
 import ShowPersonal from "./Pages/ShowPersonal";
 import Payment from "./Pages/Payment";
@@ -38,6 +40,7 @@ function App() {
     
     <div className="App">
        <BrowserRouter>
+
         
         <Switch>
           
@@ -51,10 +54,19 @@ function App() {
           <Route exact path= { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/showpersonal" : "" )})} component={ShowPersonal} />
           <Route exact path = { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/payment" : "" )})} component={Payment} />
           <Route exact path= { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/contact" : "" )})} component={Contact} />
+
+
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/Showpersonal" component={ShowPersonal} />
+          <Route path="/Payment" component={Payment} />
+          <Route path="/Contact" component={Contact} />
+
          
       </LoggInContext.Provider>
         </Switch>
       </BrowserRouter>
+      
     </div>
 
 
