@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar from "./NavBar";
+
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Pages/Home";
 import ShowPersonal from "./Pages/ShowPersonal";
@@ -14,12 +16,12 @@ function App() {
   return (
     <div className="App">
        <BrowserRouter>
-        
+
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/showpersonal" component={ShowPersonal} />
-          <Route path="/payment" component={Payment} />
-          <Route path="/contact" component={Contact} />
+          <Route path="/Showpersonal" component={ShowPersonal} />
+          <Route path="/Payment" component={Payment} />
+          <Route path="/Contact" component={Contact} />
          
         </Switch>
       </BrowserRouter>
