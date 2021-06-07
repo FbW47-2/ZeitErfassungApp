@@ -7,7 +7,7 @@ import './NavBar.css';
 function NavBar() {
     return (
         <div>
-            <ul>
+            <ul className="navbarUl">
                <Link to = '/' > <li>Logo</li> </Link>
                 <Link to = '/showpersonal' > <li> Show Personal</li> </Link>
                 <Link to = '/payment' > <li> Payment</li> </Link>
