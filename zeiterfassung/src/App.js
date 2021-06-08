@@ -9,6 +9,7 @@ import ShowPersonal from "./Pages/ShowPersonal";
 import Payment from "./Pages/Payment";
 import Contact from "./Pages/Contact";
 import Homepage from "./Pages/Homepage";
+import ShowContact from "./Pages/ShowContact";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -54,7 +55,8 @@ function App() {
           <Route exact path= { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/showpersonal" : "" )})} component={ShowPersonal} />
           <Route exact path = { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/payment" : "" )})} component={Payment} />
           <Route exact path= { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/contact" : "" )})} component={Contact} />
-
+          <Route exact path= { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/showcontact" : "" )})} component={ShowContact} />
+            
 
           
 

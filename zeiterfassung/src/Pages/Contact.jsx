@@ -2,6 +2,9 @@ import React from 'react';
 import "./Contact.css";
 import NavBar from "../NavBar"
 import { Button, Input, Form , FormGroup, Label, Row, Col} from 'reactstrap';
+import ShowContact from "./ShowContact.js";
+import {Link} from 'react-router-dom';
+import {useHistory} from "react-router-dom"
 
 /* 
 function Contact() {
@@ -31,7 +34,6 @@ function Contact() {
 
                 <Input type="text" class="contact-form-text" placeholder=" Address"/>
 
-
                 <Label for="exampleText</NavBar>
 
                 
@@ -44,6 +46,16 @@ function Contact() {
         
     )
 } */
+
+const init ={
+  "firstName" : "",
+  "lastName" : "",
+  "email" : "",
+  "phone" : "",
+  "address" : "",
+  "description" : ""
+}
+
 function Contact() {
     let [firstName, setFirstName] = React.useState('');
     let [lastName, setLastName] = React.useState('');
@@ -51,13 +63,17 @@ function Contact() {
     let [phone, setPhone] = React.useState('');
     let [address, setAddress] = React.useState('');
     let [description, setDescription] = React.useState('');
-  
-    let [submittedFirstName, setSubmittedFirstName] = React.useState('');
+    let [contactInfo, setContactInfo] =React.useState(init);
+    let [showInfo, setShowInfo] =React.useState(false);
+   
+    /*
+    let [submittedFirstName, setSubmittedFirstName]=React.useState('');
     let [submittedLastName, setSubmittedLastName] = React.useState('');
     let [submittedEmail, setSubmittedEmail] = React.useState('');
     let [submittedPhone, setSubmittedPhone] = React.useState('');
     let [submittedAddress, setSubmittedAddress] = React.useState('');
     let [submittedDescription, setSubmittedDescription] = React.useState('');
+    */
   
     const handleChangeFirstName = (event) => {
       setFirstName(event.target.value);
@@ -93,16 +109,39 @@ function Contact() {
   
     const handleSubmit = (event) => {
       event.preventDefault();
+      /*
       setSubmittedFirstName(firstName);
       setSubmittedLastName(lastName);
       setSubmittedEmail(email);
       setSubmittedPhone(phone);
       setSubmittedAddress(address);
       setSubmittedDescription(description);
+      */
       console.log("submit handled");
+      /* object mit allem prop zusammen bauen */
+
+      const contactInfo ={
+        "firstName" : firstName,
+        "lastName" : lastName,
+        "email" : email,
+        "phone" : phone,
+        "address" : address,
+        "description" : description
+      }
+
+      console.log("contactInfo: ", contactInfo)
+      /* showContact rendern */
+      setContactInfo(contactInfo)
+      setShowInfo(!showInfo)
+      
+
 
 
     }
+
+    /*const renderComponent = () => {
+      return <div> <ShowContact contactInfo = {contactInfo}/></div>
+    } */
 
 
   const handleReset = () => {
@@ -121,13 +160,13 @@ function Contact() {
       <NavBar/>
       <div className="main">
         
-       
+       {showInfo && <ShowContact contactInfo = {contactInfo}/> }
         
         <Form class="contact-form " onReset={handleReset} onSubmit={handleSubmit}>
 
         <h1>Contact Us</h1>
             <p className="problem">if you have any problem</p>
-          <label>
+          
 
           <FormGroup className="row">
 
@@ -148,38 +187,17 @@ function Contact() {
         <Input type="textarea" name="text" id="exampleText"
         value={description} onChange={handleDescriptionChange} />
 
-    </FormGroup>
 
-          </label>
-          <br />
-          <br />
-          <Button type="reset" class="btn" value="Reset" color="success">Reset</Button>
-          <Button type="submit" class="btn" value="Submit" color="success">Send</Button>
+        <Button type="reset" class="btn" value="Reset" color="info"  size="sm">Reset</Button>
+        
+        <Button type="submit" class="btn" value="Submit" color="info" >Send</Button>
+
+    </FormGroup>
 
          
         </Form>
 
         
-
-        <Form className="checkDiv">
-          <h1>your Information</h1>
-        
-            <br />
-
-            <p className="info">FirstName: <span>{submittedFirstName}</span></p>
-            <br />
-    
-            <p className="info">LastName: <span>{submittedLastName}</span></p>
-            <br />
-            <p className="info">Email: <span>{submittedEmail}</span></p>
-            <br />
-            <p className="info">Phone: <span>{submittedPhone}</span></p>
-            <br />
-            <p className="info">Address: <span>{submittedAddress}</span></p>
-            <br />
-            <p className="info">Beschreibung:<br></br> <br></br> {submittedDescription}</p>
-
-        </Form>
 
         
       </div>
