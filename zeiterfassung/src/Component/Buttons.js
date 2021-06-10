@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Buttons({clickedPerson,setClickedPerson, employees, setEmployees,baslatFunc,bitirFunc}) {
+function Buttons({showDetails,clickedPerson,setClickedPerson, employees, setEmployees,baslatFunc,bitirFunc}) {
 
 
     
@@ -8,12 +8,14 @@ function Buttons({clickedPerson,setClickedPerson, employees, setEmployees,baslat
 
 
     return (
-        <div className="buttons" >
+        <div className={showDetails} >
+            <div className="buttons" >
           
-            <button onClick={baslatFunc} > Start Work {clickedPerson.name} </button>
-            
-            <button onClick={bitirFunc} >Finish Work {clickedPerson.name} </button>
-           
+          <button onClick={baslatFunc} > Start Work {clickedPerson.name} </button>
+          
+          <button onClick={bitirFunc} >Finish Work {clickedPerson.name} </button>
+         
+      </div>
         </div>
     )
 }

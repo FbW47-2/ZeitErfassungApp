@@ -3,7 +3,7 @@ import { ListGroup, ListGroupItem, Button, InputGroup, Input, InputGroupAddon } 
 
 function Employees({ handleEmployee, employees }) {
   return (
-    <div className="employeeList border border-dark rounded m-3 "  >
+    <div className="employeeList border border-dark rounded  "  >
             <InputGroup>
         <Input  placeholder="Name.." />
         <InputGroupAddon addonType="append">
@@ -18,9 +18,7 @@ function Employees({ handleEmployee, employees }) {
               <ListGroupItem
                 onClick={handleEmployee}
                 key={i}
-                tag="a"
-                href="#"
-                action
+               
               >
                 {employee.name}
               </ListGroupItem>

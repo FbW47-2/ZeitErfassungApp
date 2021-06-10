@@ -4,15 +4,17 @@ import { Table } from "reactstrap";
 
 function Details(props) {
 
-    
+  
 
 
     return (
-        <div className="details " >
-           <Table bordered>
+        <div className={props.showDetails} >
+          <Table borderless >
+         
+         
       <thead>
         <tr>
-         
+       
           <th>First Name</th>
           <th>Last Name</th>
           <th>Job</th>

@@ -138,8 +138,8 @@ function ShowPersonal() {
     <div>
         <NavBar/>
       <Employees handleEmployee={handleEmployee} employees={employees} />
-      <div className={showDetails}>
-        <Details clickedPerson={clickedPerson} employees={employees} />
+      <div >
+        <Details  showDetails={showDetails} clickedPerson={clickedPerson} employees={employees} />
         <Buttons
           baslatFunc={baslatFunc}
           bitirFunc={bitirFunc}
@@ -147,6 +147,7 @@ function ShowPersonal() {
           setClickedPerson={setClickedPerson}
           employees={employees}
           handleMoney={handleMoney}
+          showDetails={showDetails}
         />
         <Time
           clickedPerson={clickedPerson}
@@ -155,6 +156,7 @@ function ShowPersonal() {
           showPayment={showPayment}
           geld={geld}
           handleMoney={handleMoney}
+          showDetails={showDetails}
           
         />
       </div>
