@@ -1,72 +1,165 @@
-import React, {createContext, useState } from 'react'
-import Employees from '../Component/Employees'
-import Details from '../Component/Details'
-import NavBar from '../NavBar'
-import './ShowPersonnel.css'
-import logo from '../Fotos/Cüneyt.jpg'
- 
+import React, { useState, useEffect } from "react";
 
-export const ThemeContext = createContext();
+import "./ShowPersonnel.css";
+
+import Buttons from "../Component/Buttons";
+import Details from "../Component/Details";
+import Employees from "../Component/Employees";
+import Time from "../Component/Time";
+import NavBar from "../NavBar";
 
 function ShowPersonal() {
-    const [personalInfoVisibility, setPersonalInfoVisibility] = useState("hidden");
+  const [employees,setEmployees] = useState ([
+    {
+      name: "Galip",
+      surname: "Savut",
+      job: "Test Developer",
+      foto: "https://avatars.githubusercontent.com/u/61105054?v=4",
+      mail: "galip@hotmail.com",
+      city: "Frankfurt",
+      baslaSaat: 0,
+      baslaDakika: 0,
+      bitisSaat: 0,
+      bitisDakika: 0,
+    },
+    {
+      name: "Ahmad",
+      surname: "Hasan",
+      job: "Frontend Developer",
+      foto: "https://avatars.githubusercontent.com/u/61105054?v=4",
+      mail: "ahmad@gmail.com",
+      city: "Berlin",
+      baslaSaat: 0,
+      baslaDakika: 0,
+      bitisSaat: 0,
+      bitisDakika: 0,
+    },
+    {
+      name: "Cüneyt",
+      surname: "Celebi",
+      job: "Full Stack Developer",
+      foto: "https://avatars.githubusercontent.com/u/61105054?v=4",
+      mail: "cüneyt@windowslive.com",
+      city: "Hamburg",
+      baslaSaat: 0,
+      baslaDakika: 0,
+      bitisSaat: 0,
+      bitisDakika: 0,
+    },
+    {
+      name: "Lamia",
+      surname: "Gülsah",
+      job: "Backend Developer",
+      foto: "https://avatars.githubusercontent.com/u/61105054?v=4",
+      mail: "lamia@hotmail.com",
+      city: "Berlin",
+      baslaSaat: 0,
+      baslaDakika: 0,
+      bitisSaat: 0,
+      bitisDakika: 0,
+    },
+    {
+      name: "Zeynep",
+      surname: "Gültekin",
+      job: "Full Stack Developer",
+      foto: "https://avatars.githubusercontent.com/u/61105054?v=4",
+      mail: "zeynep.pehlivan@gmail.com",
+      city: "Dresden",
+      baslaSaat: 0,
+      baslaDakika: 0,
+      bitisSaat: 0,
+      bitisDakika: 0,
+    },
+  ]);
 
-    const [emptyInfo, setEmptyInfo] = useState({
-        name:"",
-        surname: "",
-        job:"",
-        foto:""
+  const [showDetails, setShowDetails] = React.useState("nein");
+  const [showPayment, setShowPayment] = React.useState("nein");
+  const [geld, setGeld] = React.useState("");
+
+  const [clickedPerson, setClickedPerson] = React.useState({});
+
+  function handleEmployee(e) {
+    setShowDetails("ja");
+    employees.forEach((employee) => {
+      if (employee.name === e.target.innerText) {
+        const newEmployee = {...employee}
+        setClickedPerson(newEmployee);
+      }
     });
+  }
 
-    const employees = [{
-        name:"Galip",
-        surname: "Savut",
-        job:"Test Developer",
-        foto:"https://avatars.githubusercontent.com/u/61105054?v=4"
-        
-    },
-    {
-        name:"Ahmad",
-        surname: "Hasan",
-        job:"Frontend Developer",
-        foto: "https://media-exp1.licdn.com/dms/image/C4D03AQFoBRaq3fFsMA/profile-displayphoto-shrink_200_200/0/1602587368835?e=1628121600&v=beta&t=ZdI61hIh01OJyLqKUSUl_huXxDoOaiNTcJb282oAP1M"
-        
-    },
-    {
-        name:"Cüneyt",
-        surname: "Celebi",
-        job:"Full Stack Developer",
-        foto:logo
-        
-    },
-    {
-        name:"Lamia",
-        surname: "Gülsah",
-        job:"Backend Developer",
-        foto: ""
-        
-    },
-    {
-        name:"Zeynep",
-        surname: "Gültekin",
-        job:"Full Stack Developer",
-        
-    }];
-    return (
-        <>
+
+  function baslatFunc() {
+
+    var d = new Date();
+
+    employees.map((kisi, i) => {
+      if (kisi.name === clickedPerson.name) {
+        kisi.baslaSaat = d.getHours();
+        kisi.baslaDakika=d.getMinutes()
+        const newKisi = {...kisi}
+        setClickedPerson(newKisi);
+      }
+    });
+  }
+
+
+  function bitirFunc(){
+    var b = new Date();
+
+    
+    employees.map((person, i) => {
+      if (person.name === clickedPerson.name) {
+        person.bitisSaat = b.getHours();
+        person.bitisDakika=b.getMinutes()
+        const newPerson = {...person}
+        setClickedPerson(newPerson);
+      }
+    });
+    setShowPayment("ja")
+    
+  }
+
+
+  function handleMoney(){
+    const totalMinute = ((clickedPerson.bitisSaat - clickedPerson.baslaSaat)*60) + (clickedPerson.bitisDakika - clickedPerson.baslaDakika);
+    const totalPayment = totalMinute * (10/60)
+    
+    setGeld(`${totalPayment}€`)
+    
+  }
+
+
+
+
+
+
+  return (
+    <div>
         <NavBar/>
-        <div className="ShowDiv">
-            {/* {employees.name =="Galip" ? } */}
-            
-            <ThemeContext.Provider value={{employees, personalInfoVisibility, setPersonalInfoVisibility, emptyInfo, setEmptyInfo}}>
-
-            <Employees />
-            <Details/>
-            </ThemeContext.Provider>
-
-        </div>
-        </>
-    )
+      <Employees handleEmployee={handleEmployee} employees={employees} />
+      <div className={showDetails}>
+        <Details clickedPerson={clickedPerson} employees={employees} />
+        <Buttons
+          baslatFunc={baslatFunc}
+          bitirFunc={bitirFunc}
+          clickedPerson={clickedPerson}
+          setClickedPerson={setClickedPerson}
+          employees={employees}
+          handleMoney={handleMoney}
+        />
+        <Time
+          clickedPerson={clickedPerson}
+          setClickedPerson
+          employees={employees}
+          showPayment={showPayment}
+          geld={geld}
+          handleMoney={handleMoney}
+          
+        />
+      </div>
+    </div>
+  );
 }
 
-export default ShowPersonal
+export default ShowPersonal;

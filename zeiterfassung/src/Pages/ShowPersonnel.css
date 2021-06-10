@@ -1,7 +1,41 @@
+
+
+
 .ShowDiv{
    
    display: flex;
-  
+   flex-direction: row ;
    justify-content: space-around;
 
 }
+
+.nein{
+
+  visibility: hidden;
+
+}
+
+.ja{
+  visibility: visible;
+}
+
+
+.employeeList {
+  width: 20rem;
+  /* border: 2px black solid; */
+}
+
+
+.buttons button {
+width: 200px;
+height: 40px;
+background-color: red;
+color: white;
+margin:0 auto;
+}
+
+.buttons button:first-child {
+ 
+  background-color: navy;
+ 
+  }

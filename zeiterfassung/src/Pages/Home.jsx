@@ -46,7 +46,7 @@ function Home() {
 
                     </FormGroup>
                     
-                    <Button sm={10} color="success" size="lg" block onClick = { () => { setShowProfile(true) }}>Log in</Button>
+                    <Button  className="homeButton" sm={10} color="success" size="lg" block onClick = { () => { setShowProfile(true) }}>Log in</Button>
 
                 </div>
     

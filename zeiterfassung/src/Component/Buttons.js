@@ -1,15 +1,21 @@
 import React from 'react'
-import {Button} from 'reactstrap'
-import './Details.css';
 
-function Buttons() {
+function Buttons({clickedPerson,setClickedPerson, employees, setEmployees,baslatFunc,bitirFunc}) {
+
+
+    
+
+
+
     return (
-        <div >
-             <div className="Buttons">
-                <Button className="ButtonCenter" color="primary" size="lg">Start Work</Button>
-                <Button className="ButtonCenter1"  color="danger" size="lg">Finish Work</Button>
-            </div>
+        <div className="buttons" >
+          
+            <button onClick={baslatFunc} > Start Work {clickedPerson.name} </button>
+            
+            <button onClick={bitirFunc} >Finish Work {clickedPerson.name} </button>
+           
         </div>
     )
 }
+
 export default Buttons

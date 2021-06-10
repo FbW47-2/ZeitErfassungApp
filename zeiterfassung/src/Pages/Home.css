@@ -34,7 +34,7 @@
   font-size: 0.95em;
 }
 
-Button {
+.homeButton {
 
     width: 322px !important;
     height: 50px;

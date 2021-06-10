@@ -51,7 +51,8 @@ function App() {
               return (userName === res.name && res.password === password && res.admin && showProfile ? <Redirect to="./homepage" /> : <Home/>)}) }
           </Route> 
           <Route exact path= { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/homepage" : "" )})} component={ Homepage }/>
-          <Route exact path= { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/showpersonal" : "" )})} component={ShowPersonal} />
+          <Route  path= "/showpersonal" component={ShowPersonal} />
+          {/* <Route exact path= { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/showpersonal" : "" )})} component={ShowPersonal} /> */}
           <Route exact path = { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/payment" : "" )})} component={Payment} />
           <Route exact path= { realAdmins.map ( res => { return (res.admin == true && res.password == password && res.name == userName? "/contact" : "" )})} component={Contact} />
 
