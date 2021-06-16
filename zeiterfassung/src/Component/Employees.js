@@ -1,13 +1,18 @@
 import React from "react";
 import { ListGroup, ListGroupItem, Button, InputGroup, Input, InputGroupAddon } from "reactstrap";
 
-function Employees({ handleEmployee, employees }) {
+function Employees({ handleEmployee, employees, handleNewPerson }) {
+
+
+
+
+
   return (
     <div className="employeeList border border-dark rounded  "  >
             <InputGroup>
-        <Input  placeholder="Name.." />
+         <Input  placeholder="Name.." /* onChange={inputValue}*/ /> 
         <InputGroupAddon addonType="append">
-          <Button  color="success">New Person</Button>
+          <Button onClick={handleNewPerson} color="success">New Person</Button>
         </InputGroupAddon>
       </InputGroup>
       {employees.map((employee, i) => {
