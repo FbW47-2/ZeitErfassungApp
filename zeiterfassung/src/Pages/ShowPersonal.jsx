@@ -91,20 +91,29 @@ function ShowPersonal() {
 
   function baslatFunc() {
 
+    const copyEmployeesBasla = [...employees]
+
     var d = new Date();
 
-    employees.map((kisi, i) => {
+    copyEmployeesBasla.map((kisi, i) => {
       if (kisi.name === clickedPerson.name) {
         kisi.baslaSaat = d.getHours();
         kisi.baslaDakika=d.getMinutes()
+        
         const newKisi = {...kisi}
-        setClickedPerson(newKisi);
+        setClickedPerson(newKisi)
+
       }
     });
+
+    setEmployees(copyEmployeesBasla)
+    console.log(employees);
   }
 
 
   function bitirFunc(){
+
+
     var b = new Date();
 
     
